@@ -15,7 +15,7 @@ Mouse Pancreatic Islet RNA-Seq [GSE183247](https://www.ncbi.nlm.nih.gov/geo/quer
 1. fastq files obtained from GEO using ***fastq-dump*** 
 2. check quality and potentially remove adapters ***fastqc*** and ***cutadapt***
 3. Align to the genome using ***STAR Aligner***
-4-5. Manipulate alignments using ***samtools***
+4 -5. Manipulate alignments using ***samtools***
 6-7. Optional ***featureCounts*** and count table 
 8. Alternative splicing anlysis to identify alternatively spliced genes using ***rMATS***
 

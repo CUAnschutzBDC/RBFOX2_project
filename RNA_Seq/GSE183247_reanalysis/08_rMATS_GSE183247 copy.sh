@@ -22,14 +22,14 @@ dat='/beevol/home/mossnico/GEO_Datasets'
 rmats='/cluster/software/modules-sw/rMATS/4.0.2/rMATS-turbo-Linux-UCS2/rmats.py'
 
 # Lists of bam files
-b1="$dat/b1_MIN6.txt"
-b2="$dat/b2_MIN6.txt"
+b1="$dat/b1_GSE183247.txt"
+b2="$dat/b2_GSE183247.txt"
 
 # GTF
 gtf="$dat/ref/star/mouse/Grm38/gencode.vM25.primary_assembly.annotation.gtf"
 
 # Output directory
-out='rMATS_v4.0.1_output_MIN6'
+out='rMATS_v4.0.2_output_GSE183247'
 out=$(realpath "$out")
 
 # Run rMATS
@@ -43,4 +43,4 @@ python "$rmats" \
     --od "$out" \
     -t paired \
     --nthread 6 \
-    --readLength 150
+    --readLength 125

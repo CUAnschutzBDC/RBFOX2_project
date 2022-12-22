@@ -10,17 +10,17 @@ Human Pancreatic Islet RNA-Seq [GSE164416](https://www.ncbi.nlm.nih.gov/geo/quer
 Mouse Pancreatic Islet RNA-Seq [GSE183247](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE183247)
 
 ### Analysis Instructions for Initial RNA-Seq Analysis 
-(from the **RNA_Seq** repo)\
+(from [RNA_Seq](https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq))
 
 1. fastq files obtained from GEO using ***fastq-dump*** 
 2. check quality and potentially remove adapters ***fastqc*** and ***cutadapt***
 3. Align to the genome using ***STAR Aligner***
-4-5. Manipulate alignments using ***samtools***
-6-7. Optional ***featureCounts*** and count table 
-8. Alternative splicing anlysis to identify alternatively spliced genes using ***rMATS***
+4. Manipulate alignments using ***samtools***
+5. Optional ***featureCounts*** and count table 
+6. Alternative splicing anlysis to identify alternatively spliced genes using ***rMATS***
 
 ### kmer Analysis Sepcific Processing 
-(referenced srcipts are in the *src* directory)
+(referenced srcipts are in [src](https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/kmer_analysis/src))
 
 1. Starting with the skipped exon output files from rMATS (*SE.MATS.JCEC.txt* or *SE.MATS.JC.txt*), generate a list of coordinates for alternative exons that are skipped (FDR < 0.05 and IncLevelDifference < -0.01), included (FDR < 0.05 and IncLevelDifference > 0.01), or insensitive (FDR > 0.05). ***kmer_analysis_coordinates_human.R*** or ***kmer_analysis_coordinates_mouse.R*** this will generate .txt files with coordinates of each exon.
 2. Translate coordinates into sequences and tally the occurances of every possible kmer (5-mer in this case) within a given distance from the exon boundary (here 200nt) using the ***kmer_sequence_options_human.py*** or ***kmer_sequence_options_mouse.py*** returning a fastq sequence file and kmer_coults.txt file for each condition.

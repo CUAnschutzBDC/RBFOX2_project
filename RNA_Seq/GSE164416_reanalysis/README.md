@@ -20,7 +20,7 @@ Here we filter the results of the rMATS analysis for events with read counts > 2
 
 
 #### Downstream Differential Expression
-Differential expression of genes was determined by [**DESeq2**](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+Differential expression of genes was determined by [**DESeq2**](https://bioconductor.org/packages/release/bioc/html/DESeq2.html).
 
 
 

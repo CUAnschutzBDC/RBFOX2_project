@@ -360,57 +360,63 @@ pre code {
 
 <div id="bulk-rna-seq-analysis-pipeline" class="section level1">
 <h1>Bulk RNA-Seq Analysis Pipeline</h1>
+<div id="general-analysis-pipeline" class="section level3">
+<h3>General Analysis Pipeline</h3>
+<ul>
+<li><a href="https://rnnh.github.io/bioinfo-notebook/docs/fastq-dump.html"><em>fastq-dump</em></a></li>
+<li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><em>FastQC</em></a>
+(v0.11.9)</li>
+<li><a href="https://cutadapt.readthedocs.io/en/stable/"><em>cutadapt</em></a>
+(Martin, 2011)</li>
+<li><a href="https://github.com/alexdobin/STAR">STAR aligner</a>
+(2.7.9a)</li>
+<li><a href="http://www.htslib.org/"><em>samtools</em></a> (Li et al.,
+2009)</li>
+<li><a href="https://academic.oup.com/bioinformatics/article/30/7/923/232889"><em>featureCounts</em></a>
+(subread 1.6.2) (Liao et al., 2014)</li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2</a>
+(v1.34.0)</li>
+<li><a href="https://rnaseq-mats.sourceforge.net/rmats4.0.2/">rMATS</a>
+(v4.0.2)</li>
+</ul>
+</div>
 <div id="experiments" class="section level3">
 <h3>Experiments</h3>
-<p><strong>Rbfox2-KD in MIN6 Cells</strong> Experimental Design Rbfox2
-KD by pooled siRNA in MIN6 compared to pool of 4 non-target control
-siRNAs.<br />
-<br />
-####Rbfox2-mut in mouse islets<strong> Bulk RNA-Seq comparing islets
-isolated from Pdx1:Cre;Rbfox2fl/lf (experimental) 8-week mice with
-Rbfox2fl/fl (control) 8-week mice.<br />
-| <em>822</em> - Male Rbfox2fl/fl | <em>824</em> - Female Rbfox2fl/fl |
-<em>825</em> - Female Pdx1:Cre;Rbfox2fl/fl | <em>826</em> - Male
-Rbfox2fl/fl | <em>827</em> - Male Pdx1:Cre;Rbfox2fl/fl | <em>828</em> -
-Male Pdx1:Cre;Rbfox2fl/fl<br />
-<br />
-### Sequencing Parameters | CU Anschutz Genomics and Micorarray Core |
-Poly A Selected Total RNA - NovaSEQ 6000 (Paired End 150 cycle
-2x150)<br />
-<br />
-### Analysis Pipeline FastQC (v0.11.9) Cutadapt (Martin, 2011) STAR
-aligner (2.7.9a) samtools (Li et al., 2009) featureCounts (subread
-1.6.2) (Liao et al., 2014) DESeq2 (v1.34.0) rMATS (v4.0.2)<br />
-</strong>rMATS v4.0.2 Splicing Analysis<strong><br />
-| </strong>b1_MIN6.txt**
-NT1_S5_sorted.bam,NT3_S6_sorted.bam,NT5_S7_sorted.bam,NT6_S8_sorted.bam
-| <strong>b2_MIN6.txt</strong>
-RbFox2_1_S1_sorted.bam,RbFox2_3_S2_sorted.bam,RbFox2_5_S3_sorted.bam,RbFox2_6_S4_sorted.bam<br />
-| <strong>b1.txt</strong>
-822_S34_sorted.bam,824_S35_sorted.bam,826_S37_sorted.bam |
-<strong>b2.txt</strong>
-825_S36_sorted.bam,827_S38_sorted.bam,828_S39_sorted.bam<br />
-<strong>rMATS</strong> generates several output files, for this analysis
-we will use the ‘JC.txt’ files that use only splice junction spanning
-reads to quantify alternative splicing events. The files are listed
-below…<br />
-| <strong>A3SS.MATS.JC.txt</strong> - Alternative 3’ Splice Site |
-<strong>A5SS.MATS.JC.txt</strong> - Alternative 5’ Splice Site |
-<strong>RI.MATS.JC.txt</strong> - Retained Intron |
-<strong>MXE.MATS.JC.txt</strong> - Mutually Exclusive Exon |
-<strong>SE.MATS.JC.txt</strong> - Skipped Exon<br />
-<strong>CITATIONS</strong>: Shen S., Park JW., Lu ZX., Lin L., Henry
-MD., Wu YN., Zhou Q., Xing Y. rMATS: Robust and Flexible Detection of
-Differential Alternative Splicing from Replicate RNA-Seq Data. PNAS,
-111(51):E5593-601. doi: 10.1073/pnas.1419161111</p>
-<p>Park JW., Tokheim C., Shen S., Xing Y. Identifying differential
-alternative splicing events from RNA sequencing data using RNASeq-MATS.
-Methods in Molecular Biology: Deep Sequencing Data Analysis,
-2013;1038:171-179 doi: 10.1007/978-1-62703-514-9_10</p>
-<p>Shen S., Park JW., Huang J., Dittmar KA., Lu ZX., Zhou Q., Carstens
-RP., Xing Y. MATS: A Bayesian Framework for Flexible Detection of
-Differential Alternative Splicing from RNA-Seq Data. Nucleic Acids
-Research, 2012;40(8):e61 doi: 10.1093/nar/gkr1291</p>
+<p><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/GSE164416_reanalysis"><strong>GSE164416_reanalysis</strong></a>
+- This experiment reanalyzes data from <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164416">GSE164416</a>
+which contains bulk islet RNA-Seq from heathy and diabetic donors. This
+dataset was used to identify <em>RBFOX2</em> expression changes in T2D
+and the enrichment of RBFOX2 binding sequence (GCAUG) near alternative
+exons.</p>
+<p><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/GSE183247_reanalysis"><strong>GSE183247_reanalysis</strong></a>
+- This experiment reanalyzes data from <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE183247">GSE183247</a>
+which contains bulk islet RNA-Seq from obese diabetic mice (NZO) and
+obese non-diabetic mice (<em>ob/ob</em>). This dataset was used to
+identify <em>Rbfox2</em> expression changes in T2D and the enrichment of
+RBFOX2 binding sequence (GCAUG) near alternative exons.</p>
+<p><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/HPAP_sorted_beta_reanalysis"><strong>HPAP_sorted_beta_reanalysis</strong></a>
+- This experiment reanalyzes data from <a href="https://hpap.pmacs.upenn.edu/">PANC-DB</a>. Here we use the sorted
+human β cells to identify changes in <em>RBFOX2</em>.</p>
+<p><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/Rbfox2_KD_MIN6_analysis"><strong>Rbfox2_KD_MIN6_analysis</strong></a>
+- This experiment is specific to our study of the role of RBFOX2 in
+pancreatic β cells and will be available at GSE221277.</p>
+<ul>
+<li><p>In this analysis we compare mouse insulinoma (MIN6) cells treated
+with a pool of non-target siRNA (NT) or <em>Rbfox2</em> directed siRNA
+(KD) for 48h.</p></li>
+<li><p>PolyA Selected Total RNA, NovaSeq 6000 150bp Paired End, ~40
+million Reads</p></li>
+</ul>
+<p><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/Rbfox2_mut_islet_analysis"><strong>Rbfox2_mut_islet_analysis</strong></a>
+- This experiment is specific to our study of the role of RBFOX2 in
+mouse pancreas and will be available at GSE221277.</p>
+<ul>
+<li><p>In this analysis we compare bulk RNA-Seq from <em>Rbfox2</em>-mut
+islets (Pdx1:CRE; Rbfox2 fl/fl) to the corresponding non-CRE controls
+(Rbfox2 fl/fl).</p></li>
+<li><p>PolyA Selected Total RNA, NovaSeq 6000 150bp Paired End, ~40
+million Reads</p></li>
+</ul>
 </div>
 </div>
 

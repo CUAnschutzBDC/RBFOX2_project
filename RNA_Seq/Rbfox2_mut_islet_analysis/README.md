@@ -1,5 +1,5 @@
-# Rbfox2-KD in MIN6 Cells
-The goal of this experiment is to establish a model to investigate RBFOX2 sensitive alternative splicing and gene expression in mouse β cells. 
+# Rbfox2-mut Mouse Islets
+The goal of this experiment is to establish a model to investigate RBFOX2 sensitive alternative splicing in mouse islets. 
 
 Written by Nicole Moss
 
@@ -7,7 +7,7 @@ Written by Nicole Moss
 
 This experiment is specific to our study of the role of RBFOX2 in pancreatic β cells and will be available at GSE221277.
 
-* In this analysis we compare mouse insulinoma (MIN6) cells treated with a pool of non-target siRNA (NT) or Rbfox2 directed siRNA (KD) for 48h, n = 4 for each condition.
+* In this analysis we compare bulk-RNA-Seq from 8-week Rbfox2_mut islets (Pdx1:CRE;Rbfox2 fl/fl) to the coresponding non-cre control (Rbfox2 fl/fl), n = 3 for each condition.
 
 * PolyA Selected Total RNA, NovaSeq 6000 150bp Paired End, ~40 million Reads
 
@@ -27,6 +27,5 @@ Here we filter the results of the rMATS analysis for events with read counts > 2
 
 #### Downstream Differential Expression
 Differential expression of genes was determined by [**DESeq2**](https://bioconductor.org/packages/release/bioc/html/DESeq2.html).
-
 
 

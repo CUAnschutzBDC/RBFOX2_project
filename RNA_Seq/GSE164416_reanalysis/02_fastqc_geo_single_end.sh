@@ -7,7 +7,7 @@
 #BSUB -q rna
 #BSUB -n 6
 
-module load fastqc/0.11.7
+module load fastqc/0.11.7 
 
 SAMPLES=(
 SRR12885579

@@ -358,58 +358,49 @@ pre code {
 </div>
 
 
-<div id="kmer-analysis" class="section level1">
-<h1>kmer Analysis</h1>
-<p>This document describes the kmer analysis used to identify kmer
-enrichment near alternative exons. The scripts found in the <em>src</em>
-directory were used to conduct this analysis as part of study of RBFOX2
-regulation in both mouse and human type 2 diabetes (T2D).</p>
+<div id="rbfox2-kd-in-min6-cells" class="section level1">
+<h1>Rbfox2-KD in MIN6 Cells</h1>
+<p>The goal of this experiment is to establish a model to investigate
+RBFOX2 sensitive alternative splicing and gene expression in mouse β
+cells.</p>
 <p>Written by Nicole Moss</p>
 <div id="datasets" class="section level3">
 <h3>Datasets</h3>
-<p>Human Pancreatic Islet RNA-Seq <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164416">GSE164416</a></p>
-<p>Mouse Pancreatic Islet RNA-Seq <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE183247">GSE183247</a></p>
+<p>This experiment is specific to our study of the role of RBFOX2 in
+pancreatic β cells and will be available at GSE221277.</p>
+<ul>
+<li><p>In this analysis we compare mouse insulinoma (MIN6) cells treated
+with a pool of non-target siRNA (NT) or Rbfox2 directed siRNA (KD) for
+48h.</p></li>
+<li><p>PolyA Selected Total RNA, NovaSeq 6000 150bp Paired End, ~40
+million Reads</p></li>
+</ul>
 </div>
 <div id="analysis-instructions-for-initial-rna-seq-analysis" class="section level3">
 <h3>Analysis Instructions for Initial RNA-Seq Analysis</h3>
-<p>(from <a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq">RNA_Seq</a>)</p>
 <ol style="list-style-type: decimal">
-<li>fastq files obtained from GEO using
-<strong><em>fastq-dump</em></strong></li>
-<li>check quality and potentially remove adapters
-<strong><em>fastqc</em></strong> and
-<strong><em>cutadapt</em></strong></li>
-<li>Align to the genome using <strong><em>STAR
-Aligner</em></strong></li>
-<li>Manipulate alignments using <strong><em>samtools</em></strong></li>
-<li>Optional <strong><em>featureCounts</em></strong> and count
-table</li>
+<li>check quality <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><strong><em>fastqc</em></strong></a></li>
+<li>remove adapters <a href="https://cutadapt.readthedocs.io/en/stable/"><strong><em>cutadapt</em></strong></a></li>
+<li>re-check quality <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><strong><em>fastqc</em></strong></a></li>
+<li>Align to the genome using <a href="https://github.com/alexdobin/STAR"><strong><em>STAR
+Aligner</em></strong></a></li>
+<li>Manipulate alignments using <a href="http://samtools.sourceforge.net/"><strong><em>samtools</em></strong></a></li>
+<li>Optional <a href="https://subread.sourceforge.net/"><strong><em>featureCounts</em></strong></a>
+and count table 7. generate count table</li>
 <li>Alternative splicing anlysis to identify alternatively spliced genes
-using <strong><em>rMATS</em></strong></li>
+using <a href="https://rnaseq-mats.sourceforge.net/rmats4.0.2/"><strong><em>rMATS</em></strong></a></li>
 </ol>
+<div id="downstream-rmats-analysis" class="section level4">
+<h4>Downstream rMATS Analysis</h4>
+<p>Here we filter the results of the rMATS analysis for events with read
+counts &gt; 20 across samples, FDR &lt; 0.05, and |ΔPSI| &gt; 0.01.
+Follow-up <a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/kmer_analysis">kmer</a>
+analysis.</p>
 </div>
-<div id="kmer-analysis-sepcific-processing" class="section level3">
-<h3>kmer Analysis Sepcific Processing</h3>
-<p>(referenced srcipts are in <a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/kmer_analysis/src">src</a>)</p>
-<ol style="list-style-type: decimal">
-<li>Starting with the skipped exon output files from rMATS
-(<em>SE.MATS.JCEC.txt</em> or <em>SE.MATS.JC.txt</em>), generate a list
-of coordinates for alternative exons that are skipped (FDR &lt; 0.05 and
-IncLevelDifference &lt; -0.01), included (FDR &lt; 0.05 and
-IncLevelDifference &gt; 0.01), or insensitive (FDR &gt; 0.05).
-<strong><em>kmer_analysis_coordinates_human.R</em></strong> or
-<strong><em>kmer_analysis_coordinates_mouse.R</em></strong> this will
-generate .txt files with coordinates of each exon.</li>
-<li>Translate coordinates into sequences and tally the occurances of
-every possible kmer (5-mer in this case) within a given distance from
-the exon boundary (here 200nt) using the
-<strong><em>kmer_sequence_options_human.py</em></strong> or
-<strong><em>kmer_sequence_options_mouse.py</em></strong> returning a
-fastq sequence file and kmer_coults.txt file for each condition.</li>
-<li>Determine enrichment of kmer counts relative to insensitive exons
-using <strong><em>kmer_enrichment_plot_mouse.R</em></strong> or
-<strong><em>kmer_enrichment_plot_mouse.R</em></strong></li>
-</ol>
+<div id="downstream-differential-expression" class="section level4">
+<h4>Downstream Differential Expression</h4>
+<p>Differential expression of genes was determined by <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html"><strong>DESeq2</strong></a>.</p>
+</div>
 </div>
 </div>
 

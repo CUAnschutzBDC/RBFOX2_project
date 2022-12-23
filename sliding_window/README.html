@@ -358,58 +358,29 @@ pre code {
 </div>
 
 
-<div id="kmer-analysis" class="section level1">
-<h1>kmer Analysis</h1>
-<p>This document describes the kmer analysis used to identify kmer
-enrichment near alternative exons. The scripts found in the <em>src</em>
-directory were used to conduct this analysis as part of study of RBFOX2
-regulation in both mouse and human type 2 diabetes (T2D).</p>
-<p>Written by Nicole Moss</p>
+<div id="eclip-peak-sliding-window-analysis" class="section level1">
+<h1>eCLIP Peak Sliding Window Analysis</h1>
+<p>This function will count overlapping peaks within a set distance from
+exon boundaries.</p>
+<p>Written by Nicole Moss and Kristen Wells</p>
 <div id="datasets" class="section level3">
 <h3>Datasets</h3>
-<p>Human Pancreatic Islet RNA-Seq <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164416">GSE164416</a></p>
-<p>Mouse Pancreatic Islet RNA-Seq <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE183247">GSE183247</a></p>
+<p>Initial datasets for this analysis are the normalized and IgG
+controlled output of the eCLIP analysis pipeline and the filterd output
+of rMATS casette exon (or skipped exon) and mutually exclusive exon.</p>
 </div>
-<div id="analysis-instructions-for-initial-rna-seq-analysis" class="section level3">
-<h3>Analysis Instructions for Initial RNA-Seq Analysis</h3>
-<p>(from <a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq">RNA_Seq</a>)</p>
-<ol style="list-style-type: decimal">
-<li>fastq files obtained from GEO using
-<strong><em>fastq-dump</em></strong></li>
-<li>check quality and potentially remove adapters
-<strong><em>fastqc</em></strong> and
-<strong><em>cutadapt</em></strong></li>
-<li>Align to the genome using <strong><em>STAR
-Aligner</em></strong></li>
-<li>Manipulate alignments using <strong><em>samtools</em></strong></li>
-<li>Optional <strong><em>featureCounts</em></strong> and count
-table</li>
-<li>Alternative splicing anlysis to identify alternatively spliced genes
-using <strong><em>rMATS</em></strong></li>
-</ol>
-</div>
-<div id="kmer-analysis-sepcific-processing" class="section level3">
-<h3>kmer Analysis Sepcific Processing</h3>
-<p>(referenced srcipts are in <a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/kmer_analysis/src">src</a>)</p>
-<ol style="list-style-type: decimal">
-<li>Starting with the skipped exon output files from rMATS
-(<em>SE.MATS.JCEC.txt</em> or <em>SE.MATS.JC.txt</em>), generate a list
-of coordinates for alternative exons that are skipped (FDR &lt; 0.05 and
-IncLevelDifference &lt; -0.01), included (FDR &lt; 0.05 and
-IncLevelDifference &gt; 0.01), or insensitive (FDR &gt; 0.05).
-<strong><em>kmer_analysis_coordinates_human.R</em></strong> or
-<strong><em>kmer_analysis_coordinates_mouse.R</em></strong> this will
-generate .txt files with coordinates of each exon.</li>
-<li>Translate coordinates into sequences and tally the occurances of
-every possible kmer (5-mer in this case) within a given distance from
-the exon boundary (here 200nt) using the
-<strong><em>kmer_sequence_options_human.py</em></strong> or
-<strong><em>kmer_sequence_options_mouse.py</em></strong> returning a
-fastq sequence file and kmer_coults.txt file for each condition.</li>
-<li>Determine enrichment of kmer counts relative to insensitive exons
-using <strong><em>kmer_enrichment_plot_mouse.R</em></strong> or
-<strong><em>kmer_enrichment_plot_mouse.R</em></strong></li>
-</ol>
+<div id="function" class="section level3">
+<h3>Function</h3>
+<p><strong>peak_exon_overlap</strong>(rMATS_data, eCLIP_data, nt_start,
+nt_end, by)</p>
+<ul>
+<li><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/RNA_Seq/Rbfox2_KD_MIN6_analysis"><em>rMATS_data</em></a></li>
+<li><a href="https://github.com/CUAnschutzBDC/RBFOX2_project/tree/main/eCLIP_seq"><em>eCLIP_data</em></a></li>
+<li><em>nt_start</em> to <em>nt_end</em> : the range that you would like
+to investigate the overlap of peaks</li>
+<li><em>by</em> : window size within the range that you would like to
+consider</li>
+</ul>
 </div>
 </div>
 

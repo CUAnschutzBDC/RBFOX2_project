@@ -1,0 +1,2 @@
+001	RBFOX2	MIN6	/beevol/home/mossnico/eCLIP/replicate_analysis/output/13_clipper_output/RBFOX2_CLIP_r1_merged.bam	/beevol/home/mossnico/eCLIP/replicate_analysis/output/13_clipper_output/RBFOX2_INPUT_r1_merged.bam
+002	IgG	MIN6	/beevol/home/mossnico/eCLIP/replicate_analysis/output/13_clipper_output/IgG_CLIP_r1_merged.bam	/beevol/home/mossnico/eCLIP/replicate_analysis/output/13_clipper_output/IgG_INPUT_r1_merged.bam

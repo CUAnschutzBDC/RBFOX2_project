@@ -15,4 +15,9 @@ Initial datasets for this analysis are the normalized and IgG controlled output 
 * *nt_start* to *nt_end* : the range that you would like to investigate the overlap of peaks
 * *by* : window size within the range that you would like to consider
   
-  
+bootstrapping.R has an updated **peak_exon_overlap** function with the additioanl parameters for bootstrapping statistics. 
+            peak_exon_overlap(rMATS_data, eCLIP_data,
+                              nt_start = 0,
+                              nt_end = 300, by = 50,
+                              bootstrap = FALSE,
+                              nbootstrap = 1000)
